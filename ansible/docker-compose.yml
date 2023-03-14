@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  ansible:
+    image: cytopia/ansible:latest
+    container_name: ansible
+    network_mode: bridge
+    user: root
+    volumes:
+      - .:/data
+    environment:
+      - ANSIBLE_HOST_KEY_CHECKING=False
+      
+# ansible-playbook -i ./hosts clean.yml

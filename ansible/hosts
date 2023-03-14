@@ -1,0 +1,15 @@
+[master]
+VMA ansible_ssh_host=10.41.43.192 ansible_ssh_port=51100
+
+[agents]
+VMB1 ansible_ssh_host=10.41.43.192 ansible_ssh_port=51101
+VMB2 ansible_ssh_host=10.41.43.192 ansible_ssh_port=51102
+VMB3 ansible_ssh_host=10.41.43.192 ansible_ssh_port=51103
+VMB4 ansible_ssh_host=10.41.43.192 ansible_ssh_port=51136
+VMB6 ansible_ssh_host=10.41.43.192 ansible_ssh_port=51111
+VMB7 ansible_ssh_host=10.41.43.192 ansible_ssh_port=51112
+VMB8 ansible_ssh_host=10.41.43.192 ansible_ssh_port=51113
+
+[all:vars]
+ansible_user=chexci
+ansible_ssh_pass=

@@ -1,0 +1,68 @@
+Cheat Sheet
+
+minikube stop
+minikube delete
+minikube start
+
+
+
+kubectl get deployments
+kubectl get pods
+
+kubectl get events
+kubectl config view
+
+
+kubectl delete events --all
+
+
+kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+kubectl get services
+
+minikube service <name> 
+
+kubectl delete service --all
+kubectl delete deployment --all
+
+"Latest" is a special tag, it means that Docker always check if the downloaded image is the latest available searching the registry. 
+Retag your image with other tag than latest (e.g "demo")
+
+NodePort not working well on Windows 11, need "minikube service <service>" 
+
+
+kubectl get - list resources
+kubectl describe - show detailed information about a resource
+kubectl logs - print the logs from a container in a pod
+kubectl exec - execute a command on a container in a pod
+
+kubectl describe pods
+
+kubectl exec -it $POD_NAME -- bash
+
+minikube ssh
+
+docker compose build
+
+minikube image load kubernetes/frontend:demo
+minikube image load kubernetes/backend:demo
+
+kubectl delete service --all
+kubectl delete deployment --all
+kubectl delete events --all
+kubectl delete pods --all
+
+
+kubectl get events
+kubectl get services
+
+curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+
+
+
+# kubectl create deployment hello-kubernetes --image=kubernetes/app:demo  --replicas=1 -- python3 main.py
+# kubectl expose deployment hello-kubernetes --type=LoadBalancer --port=9990
+# minikube service hello-kubernetes
+
+
+# kubectl get pods
+# kubectl describe pod

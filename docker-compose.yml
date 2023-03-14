@@ -1,0 +1,20 @@
+---
+version: '3.7'
+
+services:
+  devenv:
+    image: idelchi/devenv:latest
+    container_name: devenv
+    hostname: devenv
+    ports:
+      # <host:container>
+      # GoDoc
+      - 8888:8888
+      # Go Profilers
+      - 10000-10200:10000-10200
+    network_mode: bridge
+    user: user
+    volumes:
+      - .:/home/user
+    extra_hosts:
+      - host:host-gateway

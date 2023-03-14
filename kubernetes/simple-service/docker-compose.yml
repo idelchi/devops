@@ -1,0 +1,14 @@
+---
+version: '3.7'
+
+services:
+  app:
+    image: kubernetes/app:demo
+    container_name: app
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 30000:9990
+    command: python3 main.py
+    user: ci

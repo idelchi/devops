@@ -1,0 +1,17 @@
+# Binaries for programs and plugins
+*.exe
+*.lnk
+*.bat
+
+# Ignored files
+.bash_history
+.gitconfig
+
+# Ignored folders
+.build
+.cache
+.task
+.exp
+.mypy_cache
+.pytests
+.secrets

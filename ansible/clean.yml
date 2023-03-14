@@ -1,0 +1,21 @@
+---
+
+- name: remove ccache
+  hosts: master
+  tasks:
+    - name: Display the config
+      shell: |
+        rm -rf /home/chexci/services/http/storage/ccache/*
+        rm -rf /home/chexci/services/nginx/storage/__cache__/*
+        rm -rf /home/chexci/tmp/storage/ccache/*
+
+- name: clean agents
+  hosts: agents
+  tasks:
+    - name: Display the config
+      shell: |
+        rm -rf /home/chexci/agent/workspace/*
+        rm -rf /home/chexci/agent_/workspace/*
+        docker stop $(docker ps -a -q)
+        docker rm $(docker ps -a -q)
+        docker system prune -a -f

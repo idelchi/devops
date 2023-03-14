@@ -1,0 +1,25 @@
+---
+version: '3.7'
+
+services:
+  frontend:
+    image: kubernetes/frontend:demo
+    container_name: frontend
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 30000:9990
+    command: python3 main-1.py
+    user: ci
+    
+  backend:
+    image: kubernetes/backend:demo
+    container_name: backend
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 30001:9990
+    command: python3 main-2.py
+    user: ci
