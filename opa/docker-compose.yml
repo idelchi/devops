@@ -1,0 +1,45 @@
+---
+version: '3.7'
+
+services:
+  app:
+    image: kubernetes/frontend:demo
+    container_name: app-service
+    build:
+      dockerfile: Dockerfile
+      context: app
+    ports:
+      - 8000:9999
+    environment:
+      - OPA_URL=http://opa-service:8181/v1
+    command: python3 main.py
+    user: ci
+
+  opa:
+    image: kubernetes/backend:demo
+    container_name: opa-service
+    build:
+      dockerfile: Dockerfile
+      context: security
+    command: run --server policy.rego
+    user: 1000:1000
+
+  tester:
+    image: kubernetes/tester:demo
+    container_name: tester
+    build:
+      dockerfile: Dockerfile
+      context: test
+    volumes:
+      - ./app/cert.pem:/usr/local/share/ca-certificates/certificate.crt
+      - .:/home/ci
+    entrypoint: bash
+    working_dir: /home/ci
+    command:
+      - -c
+      - |
+        update-ca-certificates
+        bash
+    extra_hosts:
+      - "my-cool-service:host-gateway"
+    user: root

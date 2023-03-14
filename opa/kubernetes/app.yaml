@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: app
+          image: kubernetes/frontend:demo
+          ports:
+            - containerPort: 9999
+          env:
+            - name: OPA_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: opa-config
+                  key: opa-url
+          command:
+            - 'python3'
+            - 'main.py'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9999

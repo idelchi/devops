@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opa-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: opa
+          image: kubernetes/backend:demo
+          ports:
+            - containerPort: 8181
+          args:
+            - 'run'
+            - '--server'
+            - 'policy.rego'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opa-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8181
