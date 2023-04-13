@@ -40,7 +40,7 @@
     },
     /* ****** ****** ****** */
     /* ****** OTHER ****** */
-    "prettier.configPath": "devenv/config/.prettierrc.yml",
+    "prettier.configPath": ".devenv/config/.prettierrc.yml",
     /* ****** ****** ****** */
     /* ****** PYTHON ****** */
     "python.defaultInterpreterPath": "python3",
@@ -50,10 +50,10 @@
     "python.linting.maxNumberOfProblems": 1000,
     "python.linting.prospectorEnabled": true,
     "python.linting.prospectorArgs": [
-        "--profile=devenv/config/.prospector.yml"
+        "--profile=.devenv/config/.prospector.yml"
     ],
     "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--config=devenv/config/pyproject.toml"],
+    "python.formatting.blackArgs": ["--config=.devenv/config/pyproject.toml"],
     "python.analysis.autoImportCompletions": true,
     "autoDocstring.docstringFormat": "google",
     // "[python]": {
@@ -61,12 +61,12 @@
     //         "source.organizeImports": true
     //     }
     // },
-    // "isort.args":["--settings-file=config/pyproject.toml"],
+    // "isort.args":["--settings-file=.devenv/config/pyproject.toml"],
     /* ****** ****** ****** */
     /* ****** GO ****** */
     "go.lintOnSave": "workspace",
     "go.lintTool": "golangci-lint",
-    "go.lintFlags": ["--config=devenv/config/.golangci.yml"],
+    "go.lintFlags": ["--config=.devenv/config/.golangci.yml"],
     "go.useLanguageServer": true,
     "gopls": {
         "formatting.gofumpt": true,
